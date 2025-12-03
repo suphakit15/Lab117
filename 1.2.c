@@ -3,9 +3,8 @@
 void GetSet(int data[], int *num);
 
 int main() {
-    int data[100];
-    int num;
-    GetSet(data, &num);
+    int data, num;
+    GetSet(&data, &num);
     return 0;
 }
 
