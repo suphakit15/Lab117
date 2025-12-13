@@ -1,43 +1,43 @@
 #include<stdio.h>
 #include<string.h>
 
-void explode(char str1[], char splitter, char str2[][10], int *count) {
-    int len = strlen(str1);
-    int i, j, k;
-    *count = 0;
-    i = 0;
-    k = 0;
+void explode( char str1[], char splitter, char str2[][10], int *count);
 
-    for (j = 0; j <= len; j++) {
-        if (str1[j] == splitter || str1[j] == '\0') {
-            str2[i][k] = '\0';
-            i++;
-            k = 0;
-            
-            if (i >= 20) {
-                break;
-            }
+int main() { 
+    char out[ 20 ][ 10 ];
+    int num; 
+
+    explode( "I/love/You", "/", out, &num);
+    
+    printf("จะได้ผลลัพธ์คือ:\n");
+    for (int a = 0; a < num; a++) {
+        printf("str2[%d] = %s\n", a, out[a]);
+    }
+
+    printf("count = %d\n", num);
+    return 0;
+}
+
+void explode( char str1[], char splitter, char str2[][10], int *count) {
+
+    int len = strlen(str1);
+    int a, b, c;
+    *count = 0;
+    a = 0;
+    b = 0;
+    c = 0;
+
+    for (b = 0; b <= len; b++) {
+        if (str1[b] == splitter || str1[b] == '\0') {
+            str2[a][c] = '\0';
+            a++;
+            c = 0;
+
         } else {
-            if (k < 9) {
-                str2[i][k] = str1[j];
-                k++;
-            }
+            str2[a][c] = str1[b];
+            c++;
         }
     }
     
-    *count = i;
-}
-
-int main() { 
-    char out[20][10];
-    int num; 
-    explode("I/love/you", '/', out, &num);
-    
-    printf("จะได้ผลลัพธ์คือ:\n");
-    for (int i = 0; i < num; i++) {
-        printf("str2[%d] = %s\n", i, out[i]);
-    }
-    printf("count = %d\n", num);
-    
-    return 0;
+    *count = a;
 }
